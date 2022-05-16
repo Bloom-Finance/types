@@ -28,7 +28,7 @@ type Order = {
         price: number
     }
     order_number: string
-    merchant: Merchant
+    merchant: string
     description: string
     status: string
     issued_at: number
@@ -37,6 +37,15 @@ type Order = {
         token: BloomWeb3["cryptocurrencies"]
         price: number
     }
+    consumer_info:{
+        email:string
+        name:string
+    }
+    items: Array<{
+        id: string
+        description: string
+        amount: number
+    }>
 }
 
 type SessionUser = {
@@ -50,4 +59,19 @@ type SessionUser = {
 type MerchantCredential = {
     id: string
     merchantId: string
+}
+
+type EmailData={
+    receiver:{
+        email:string,
+        name:string
+    }
+    merchant:{
+        logo:string
+        name:string
+    }
+    items:{
+        description:string
+        price:number
+    }
 }
