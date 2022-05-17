@@ -20,6 +20,28 @@ type Merchant = {
         contract: BloomWeb3["contractAddresses"]
         name: string
     }
+    credit_card_gateaway:{
+        stripe:{
+            secret:string
+        }
+    }
+    sendgrid_email:{
+        api_key:string
+        sender:string
+        templates:{
+          merchant:{
+            payment_confirmation:string
+            payment_proof:string
+            order_cancelled:string
+          }
+          buyers:{
+            payment_confirmation:string
+            payment_proof:string
+            payment_request:string
+            order_cancelled:string
+          }
+        }
+    }
 }
 type Order = {
     id: string
