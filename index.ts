@@ -42,6 +42,16 @@ type Merchant = {
           }
         }
     }
+    quickbook:{
+        api:{
+            auth_code:string
+            realm_id:string
+        }
+        credentials:{
+            client_id:string
+            client_secret:string
+        }
+    }
 }
 type Order = {
     id: string
