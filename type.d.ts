@@ -43,10 +43,8 @@ type Merchant = {
         }
     }
     quickbook: {
-        api: {
-            auth_code: string
-            realm_id: string
-        }
+        refresh_token: string
+        realmId: string
         credentials: {
             client_id: string
             client_secret: string
