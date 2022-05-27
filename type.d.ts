@@ -106,7 +106,10 @@ type EmailData = {
         price: number
     }
 }
-
+type CloudFunctions =
+    | 'quickbookConnect'
+    | 'quickbookCallback'
+    | 'quickbookRefresh'
 /// intuit o-auth
 declare module 'intuit-oauth' {
     import * as csrf from 'csrf'
@@ -204,11 +207,18 @@ declare module 'intuit-oauth' {
 
         authorizeUri(params: OAuthClient.AuthorizeParams): string
 
-        createError(e: Error, authResponse?: AuthResponse): OAuthClient.OAuthClientError
+        createError(
+            e: Error,
+            authResponse?: AuthResponse
+        ): OAuthClient.OAuthClientError
 
         createToken(uri: string): Promise<AuthResponse>
 
-        getKeyFromJWKsURI(id_token: string, kid: string, request: Request): Promise<Record<string, unknown> | string>
+        getKeyFromJWKsURI(
+            id_token: string,
+            kid: string,
+            request: Request
+        ): Promise<Record<string, unknown> | string>
 
         getTokenRequest(request: Request): Promise<AuthResponse>
 
@@ -222,7 +232,9 @@ declare module 'intuit-oauth' {
 
         log(level: string, message: string, messageData: unknown): void
 
-        makeApiCall(params?: OAuthClient.MakeApiCallParams): Promise<AuthResponse>
+        makeApiCall(
+            params?: OAuthClient.MakeApiCallParams
+        ): Promise<AuthResponse>
 
         refresh(): Promise<AuthResponse>
 
@@ -232,7 +244,9 @@ declare module 'intuit-oauth' {
 
         setToken(params: TokenData): Token
 
-        validateIdToken(params?: OAuthClient.ValidateIdTokenParams): Promise<Response>
+        validateIdToken(
+            params?: OAuthClient.ValidateIdTokenParams
+        ): Promise<Response>
 
         validateToken(): void
     }
