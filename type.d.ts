@@ -54,17 +54,15 @@ type Merchant = {
 
 type Order = {
     id: string
-    fiat: {
+    fiat?: {
         currency: string
         price: number
     }
     order_number: string
     merchant: string
-    description: string
     status: string
-    issued_at: number
-    exchange_rates: number
-    cryptocurrency: {
+    exchange_rates?: number
+    cryptocurrency?: {
         token: BloomWeb3['cryptocurrencies']
         price: number
     }
@@ -77,6 +75,10 @@ type Order = {
         description: string
         amount: number
     }>
+    payment_info: {
+        issued_at: number
+        payment_id: string
+    }
 }
 
 type SessionUser = {
