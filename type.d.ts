@@ -1,5 +1,5 @@
 type BloomWeb3 = {
-    chains: 'string'
+    chains: string
     cryptocurrencies: 'DAI' | 'ETH' | 'USDT'
     contractAddresses: string
 }
@@ -25,6 +25,11 @@ type Merchant = {
             secret: string
         }
     }
+    bank_accounts?: Array<{
+        account_number: string
+        bank: string
+        beneficiary: string
+    }>
     sendgrid_email: {
         api_key: string
         sender: string
@@ -58,27 +63,48 @@ type Order = {
         currency: string
         price: number
     }
+    invoice?: string
     order_number: string
-    merchant: string
-    status: string
-    exchange_rates?: number
-    cryptocurrency?: {
+    merchant: Merchant
+    consumer_info: {
+        email?: string
+        name?: string
+    }
+    status:
+        | 'PENDING'
+        | 'IN PROCESS'
+        | 'PAYED'
+        | 'CANCELLED'
+        | 'IN REVIEW'
+        | 'FAILED'
+    issued_at: number
+    exchange_rates: number
+    cryptocurrency: {
         token: BloomWeb3['cryptocurrencies']
         price: number
-    }
-    consumer_info: {
-        email: string
-        name: string
     }
     items: Array<{
         id: string
         description: string
         amount: number
     }>
-    payment_info: {
+    urlInvoice: string | null
+    payment_info?: {
         issued_at: number
         payment_id: string
     }
+}
+
+type Payment = {
+    id: string
+    date: number
+    order_id: string
+    pay_with: {
+        stripe?: any
+        crypto?: any
+        bank_transfer: any
+    }
+    status: 'CONFIRMED' | 'IN REVIEW'
 }
 
 type SessionUser = {
