@@ -63,20 +63,17 @@ type Order = {
         currency: string
         price: number
     }
-    invoice?: string
+    invoice?: {
+        id: string
+        pdf: string
+    }
     order_number: string
-    merchant: Merchant
+    merchant: string | Merchant
     consumer_info: {
         email?: string
-        name?: string
+        name: string
     }
-    status:
-        | 'PENDING'
-        | 'IN PROCESS'
-        | 'PAYED'
-        | 'CANCELLED'
-        | 'IN REVIEW'
-        | 'FAILED'
+    status: 'PENDING' | 'IN PROCESS' | 'PAYED' | 'CANCELLED' | 'IN REVIEW' | 'FAILED'
     issued_at: number
     exchange_rates: number
     cryptocurrency: {
@@ -88,7 +85,6 @@ type Order = {
         description: string
         amount: number
     }>
-    urlInvoice: string | null
     payment_info?: {
         issued_at: number
         payment_id: string
