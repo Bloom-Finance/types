@@ -73,10 +73,16 @@ type Order = {
         email?: string
         name: string
     }
-    status: 'PENDING' | 'IN PROCESS' | 'PAYED' | 'CANCELLED' | 'IN REVIEW' | 'FAILED'
+    status:
+        | 'PENDING'
+        | 'IN PROCESS'
+        | 'PAYED'
+        | 'CANCELLED'
+        | 'IN REVIEW'
+        | 'FAILED'
     issued_at: number
-    exchange_rates: number
-    cryptocurrency: {
+    exchange_rates?: number
+    cryptocurrency?: {
         token: BloomWeb3['cryptocurrencies']
         price: number
     }
