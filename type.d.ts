@@ -1,3 +1,4 @@
+type Topics = 'orderNew' | 'orderPayed' | 'orderCancelled'
 type BloomWeb3 = {
     chains: string
     cryptocurrencies: 'DAI' | 'ETH' | 'USDT'
@@ -63,10 +64,7 @@ type Order = {
         currency: string
         price: number
     }
-    invoice?: {
-        id: string
-        pdf: string
-    }
+    url_invoice?: string
     order_number: string
     merchant: string | Merchant
     consumer_info: {
