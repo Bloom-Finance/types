@@ -71,13 +71,7 @@ type Order = {
         email?: string
         name: string
     }
-    status:
-        | 'PENDING'
-        | 'IN PROCESS'
-        | 'PAYED'
-        | 'CANCELLED'
-        | 'IN REVIEW'
-        | 'FAILED'
+    status: 'PENDING' | 'IN PROCESS' | 'PAYED' | 'CANCELLED' | 'IN REVIEW' | 'FAILED'
     issued_at: number
     exchange_rates?: number
     cryptocurrency?: {
@@ -134,10 +128,7 @@ type EmailData = {
         price: number
     }
 }
-type CloudFunctions =
-    | 'quickbookConnect'
-    | 'quickbookCallback'
-    | 'quickbookRefresh'
+type CloudFunctions = 'quickbookConnect' | 'quickbookCallback' | 'quickbookRefresh'
 /// intuit o-auth
 declare module 'intuit-oauth' {
     import * as csrf from 'csrf'
@@ -235,18 +226,11 @@ declare module 'intuit-oauth' {
 
         authorizeUri(params: OAuthClient.AuthorizeParams): string
 
-        createError(
-            e: Error,
-            authResponse?: AuthResponse
-        ): OAuthClient.OAuthClientError
+        createError(e: Error, authResponse?: AuthResponse): OAuthClient.OAuthClientError
 
         createToken(uri: string): Promise<AuthResponse>
 
-        getKeyFromJWKsURI(
-            id_token: string,
-            kid: string,
-            request: Request
-        ): Promise<Record<string, unknown> | string>
+        getKeyFromJWKsURI(id_token: string, kid: string, request: Request): Promise<Record<string, unknown> | string>
 
         getTokenRequest(request: Request): Promise<AuthResponse>
 
@@ -260,9 +244,7 @@ declare module 'intuit-oauth' {
 
         log(level: string, message: string, messageData: unknown): void
 
-        makeApiCall(
-            params?: OAuthClient.MakeApiCallParams
-        ): Promise<AuthResponse>
+        makeApiCall(params?: OAuthClient.MakeApiCallParams): Promise<AuthResponse>
 
         refresh(): Promise<AuthResponse>
 
@@ -272,9 +254,7 @@ declare module 'intuit-oauth' {
 
         setToken(params: TokenData): Token
 
-        validateIdToken(
-            params?: OAuthClient.ValidateIdTokenParams
-        ): Promise<Response>
+        validateIdToken(params?: OAuthClient.ValidateIdTokenParams): Promise<Response>
 
         validateToken(): void
     }
@@ -337,4 +317,17 @@ declare module 'intuit-oauth' {
         }
     }
     export = OAuthClient
+}
+
+type GasPrice = {
+    timestamp: string
+    lasstBlok: number
+    avgTime: number
+    avgTx: number
+    avgGas: number
+    speeds: Array<{
+        acceptance: number
+        gasPrice: number
+        estimatedFee: number
+    }>
 }
