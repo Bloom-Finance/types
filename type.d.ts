@@ -138,6 +138,8 @@ type CloudFunctions =
     | 'quickbookConnect'
     | 'quickbookCallback'
     | 'quickbookRefresh'
+    | 'quickbookGetCustomers'
+    | 'quickbookGetItems'
 /// intuit o-auth
 declare module 'intuit-oauth' {
     import * as csrf from 'csrf'
