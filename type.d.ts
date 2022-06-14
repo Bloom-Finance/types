@@ -56,10 +56,14 @@ type Merchant = {
             client_secret: string
         }
     }
+    name: string
 }
 
 type Order = {
     id: string
+    isPreOrder?: boolean
+    bloom_code: string
+    callback_url?: string
     fiat?: {
         currency: string
         price: number
