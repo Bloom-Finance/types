@@ -60,6 +60,7 @@ type Merchant = {
 
 type Order = {
     id: string
+    ref_code?: string
     fiat?: {
         currency: string
         price: number
@@ -97,6 +98,7 @@ type Payment = {
         stripe?: any
         crypto?: any
         bank_transfer: any
+        payment_type: string
     }
     status: 'CONFIRMED' | 'IN REVIEW'
 }
@@ -128,16 +130,7 @@ type EmailData = {
         price: number
     }
 }
-<<<<<<< HEAD
-type CloudFunctions =
-    | 'quickbookConnect'
-    | 'quickbookCallback'
-    | 'quickbookRefresh'
-    | 'quickbookGetCustomers'
-    | 'quickbookGetItems'
-=======
-type CloudFunctions = 'quickbookConnect' | 'quickbookCallback' | 'quickbookRefresh'
->>>>>>> fd5752934fece7d0f3bfeaa0f53fa958ef7431c0
+type CloudFunctions = 'quickbookConnect' | 'quickbookCallback' | 'quickbookRefresh' | 'quickbookGetCustomers' | 'quickbookGetItems' | 'getOrderByBloomCode'
 /// intuit o-auth
 declare module 'intuit-oauth' {
     import * as csrf from 'csrf'
