@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 type Topics = 'orderNew' | 'orderPayed' | 'orderCancelled'
 type BloomWeb3 = {
     chains: string
@@ -11,10 +12,15 @@ type User = {
         role: string
     }>
 }
+type Employees = {
+    user_id: string
+    role: string
+}
 type Merchant = {
     id?: string
     company: string
     bussiness_currency: string
+    employees: Array<Employees>
     company_logo: string
     withdrawalAddress: {
         chain: BloomWeb3['chains']
@@ -134,7 +140,7 @@ type EmailData = {
         price: number
     }
 }
-type CloudFunctions = 'quickbookConnect' | 'quickbookCallback' | 'quickbookRefresh' | 'quickbookGetCustomers' | 'quickbookGetItems' | 'getOrderByBloomCode'
+type CloudFunctions = 'quickbookConnect' | 'quickbookCallback' | 'quickbookRefresh' | 'quickbookGetCustomers' | 'quickbookGetItems' | 'getOrderByBloomCode' | 'verifyInvite' | 'createInvite'
 /// intuit o-auth
 declare module 'intuit-oauth' {
     import * as csrf from 'csrf'
@@ -336,4 +342,11 @@ type GasPrice = {
         gasPrice: number
         estimatedFee: number
     }>
+}
+type Invite = {
+    id: string
+    merchant: string
+    createdBy: string
+    used: boolean
+    iat: string
 }
