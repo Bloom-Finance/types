@@ -71,8 +71,7 @@ type Merchant = {
 type Order = {
     id: string
     isPreOrder?: boolean
-    bloom_code: string
-    ref_code: string
+    bloom_code?: string
     callback_url?: string
     fiat?: {
         currency: string
