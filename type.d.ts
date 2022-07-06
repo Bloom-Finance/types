@@ -58,6 +58,7 @@ type Merchant = {
         }
     }
     quickbook: {
+        connected: boolean
         refresh_token: string
         realmId: string
         credentials: {
